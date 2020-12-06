@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Montserrat Regular';
+  src: url('../../assets/fonts/Montserrat/Montserrat-Regular.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Montserrat Bold';
+  src: url('../../assets/fonts/Montserrat/Montserrat-Bold.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Montserrat Semi-Bold';
+  src: url('../../assets/fonts/Montserrat/Montserrat-SemiBold.ttf') format('opentype');
+}
+
+.text-bold {
+  color: #597393;
+  font-family: "Montserrat Bold", sans-serif;
+  letter-spacing: -0.34px;
+  line-height: 18px;
+}
+
+.text-semi-bold {
+  color: #597393;
+  font-family: "Montserrat Semi-Bold", sans-serif;
+  font-size: 15px;
+  letter-spacing: -0.34px;
+}
+
+.text-regular {
+  color: #597393;
+  font-family: "Montserrat Regular", sans-serif;
+  letter-spacing: -0.34px;
+  line-height: 18px;
+}

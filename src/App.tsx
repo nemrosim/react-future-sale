@@ -1,36 +1,33 @@
 import React from 'react';
-import { PrimarySearchAppBar } from './components/PrimarySearchAppBar';
-import { Container, Grid, makeStyles, Typography } from '@material-ui/core';
+import { Header } from './components/Header';
 import { Route, Switch, useLocation } from 'react-router-dom';
-import { About, Items, Item, Home } from './pages';
+import { About, Home, Item, Items } from './pages';
 import { AppRoutes } from './constants';
-import { useAuthorizationContext } from './components/AuthorizationContext';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
+import { LoginPage } from './pages/LoginPage';
+import { AddItem } from './pages/AddItem';
 
 import './transition.scss';
 import './fade-transition.scss';
-import { LoginPage } from './pages/LoginPage';
-import { AddItem } from './pages/AddItem';
-import { SimpleBottomNavigation } from './components/SimpleBottomNavigation';
+import './assets/styles/text-styles.scss';
 
-const useStyles = makeStyles((theme) => ({
-    container: {
-        [theme.breakpoints.down('sm')]: {
-            paddingLeft: 0,
-        },
-    },
-}));
+import { SellerProfile } from './pages/SellerProfile/SellerProfile';
+
+const PageNotFound = () => {
+    return (
+        <>
+            <div>Page not found</div>
+        </>
+    );
+};
 
 export const App = () => {
-    const { userUID } = useAuthorizationContext();
-
     let location = useLocation();
-
-    const classes = useStyles();
 
     return (
         <>
-            <PrimarySearchAppBar />
+            <Header />
             <TransitionGroup>
                 <CSSTransition
                     key={location.key}
@@ -49,12 +46,17 @@ export const App = () => {
                         <Route path={AppRoutes.ABOUT} component={About} exact={true} />
                         <Route path={AppRoutes.ITEMS} component={Items} exact={true} />
                         <Route path={`${AppRoutes.ITEMS}/:itemId`} component={Item} exact={true} />
+                        <Route
+                            path={`${AppRoutes.USERS}/:userId`}
+                            component={SellerProfile}
+                            exact={true}
+                        />
                         <Route path={`${AppRoutes.ADD_ITEM}`} component={AddItem} exact={true} />
                         <Route path={AppRoutes.HOME} component={Home} exact={true} />
+                        <Route component={PageNotFound} />
                     </Switch>
                 </CSSTransition>
             </TransitionGroup>
-            <SimpleBottomNavigation />
         </>
     );
 };

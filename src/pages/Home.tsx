@@ -1,14 +1,12 @@
-import React, { MouseEventHandler } from 'react';
-import { Box, Button, Container, Fab, Grid, Link, makeStyles, Typography } from '@material-ui/core';
+import React from 'react';
+import { Button, Container, Grid, Link, makeStyles, Typography } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import { useSignIn } from '../hooks';
-import { AppRoutes } from '../constants';
-import AddIcon from '@material-ui/icons/Add';
-import { products } from '../constants/products';
+import { ProductProps, products } from '../constants/products';
 import { ProductCard } from '../components/ProductCard/ProductCard';
-import FiberManualRecordOutlinedIcon from '@material-ui/icons/FiberManualRecordOutlined';
-import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import { ProductCategory } from './AddItem';
+import { Icons } from '../components/Icons/Icons';
 
 const useStyles = makeStyles((theme) => ({
     fab: {
@@ -21,46 +19,98 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '25px',
         textTransform: 'none',
     },
-    futureIcon: {
-        color: '#32C5FF',
-    },
-    saleNowIcon: {
-        color: '#4EE01E',
-    },
-    categoriesIcon: {
-        color: 'white',
-    },
 }));
 
-const MaterialCenteredButton: React.FC<{ buttonText: string; onClick: MouseEventHandler }> = ({
-    buttonText,
-    onClick,
-}) => {
+const Filter = ({ text, icon }: { text: string; icon: any }) => {
+    const classes = useStyles();
+
     return (
-        <Grid container direction="row" justify="center" alignItems="center">
-            <Button variant="contained" color="primary" onClick={onClick}>
-                {buttonText}
-            </Button>
-        </Grid>
+        <Button
+            variant="contained"
+            color="default"
+            disableElevation
+            className={classes.button}
+            startIcon={icon}
+            fullWidth={true}
+        >
+            {text}
+        </Button>
     );
 };
 
-const FloatingButton = () => {
+const Filters = () => {
     const classes = useStyles();
-    const history = useHistory();
 
     return (
-        <Fab
-            variant="extended"
-            color="primary"
-            aria-label="add"
-            className={classes.fab}
-            onClick={() => {
-                history.push(AppRoutes.ADD_ITEM);
-            }}
-        >
-            <AddIcon />I want to sell some stuff
-        </Fab>
+        <Container style={{ marginTop: '15px' }}>
+            <Grid container spacing={1} direction="row" justify="space-between" alignItems="center">
+                <Grid item={true} xs={12} sm={4}>
+                    <Filter text="Future Sales" icon={<Icons.FutureSale />} />
+                </Grid>
+                <Grid item={true} xs={12} sm={4}>
+                    <Filter text="Sale now" icon={<Icons.SaleNow />} />
+                </Grid>
+                <Grid item={true} xs={12} sm={4}>
+                    <Filter text="Categories" icon={<Icons.Categories />} />
+                </Grid>
+            </Grid>
+        </Container>
+    );
+};
+
+const ProductsRow = ({ rowName, products }: { rowName: string; products: Array<ProductProps> }) => {
+    return (
+        <Grid container spacing={1} direction="row" justify="center" alignItems="center">
+            <Grid item={true} xs={12}>
+                <Container>
+                    <Grid
+                        container
+                        spacing={0}
+                        direction="row"
+                        justify="center"
+                        alignItems="center"
+                    >
+                        <Grid item={true} xs={6}>
+                            <Typography variant="h6">{rowName}</Typography>
+                        </Grid>
+                        <Grid item={true} xs={6} justify="flex-end">
+                            <div style={{ textAlign: 'right' }}>
+                                <Link
+                                    component="button"
+                                    variant="body2"
+                                    onClick={() => {
+                                        console.info("I'm a button.");
+                                    }}
+                                >
+                                    View all
+                                </Link>
+                            </div>
+                        </Grid>
+                    </Grid>
+                </Container>
+            </Grid>
+            <Grid item={true} xs={12}>
+                <div style={{ margin: '10px' }}>
+                    <Grid
+                        container
+                        spacing={1}
+                        direction="row"
+                        justify="center"
+                        alignItems="center"
+                    >
+                        {products.map((card) => {
+                            return (
+                                <Grid key={card.id} item={true} md={3} sm={4} xs={6}>
+                                    <Grid container justify="center">
+                                        <ProductCard card={card} />
+                                    </Grid>
+                                </Grid>
+                            );
+                        })}
+                    </Grid>
+                </div>
+            </Grid>
+        </Grid>
     );
 };
 
@@ -85,137 +135,31 @@ export const Home: React.FC = () => {
     return (
         <Grid container spacing={3} direction="row" justify="center" alignItems="center">
             <Grid item={true} xs={12}>
-                <Container>
-                    <Grid
-                        container
-                        spacing={1}
-                        direction="row"
-                        justify="space-between"
-                        alignItems="center"
-                    >
-                        <Grid item={true}>
-                            <Button
-                                variant="contained"
-                                color="default"
-                                className={classes.button}
-                                startIcon={
-                                    <FiberManualRecordIcon className={classes.categoriesIcon} />
-                                }
-                            >
-                                Categories
-                            </Button>
-                        </Grid>
-                        <Grid item={true}>
-                            <Button
-                                variant="contained"
-                                color="default"
-                                className={classes.button}
-                                disableRipple
-                                startIcon={<FiberManualRecordIcon className={classes.futureIcon} />}
-                            >
-                                Future Sales
-                            </Button>
-                        </Grid>
-                        <Grid item={true}>
-                            <Button
-                                variant="contained"
-                                color="default"
-                                className={classes.button}
-                                disableRipple
-                                startIcon={
-                                    <FiberManualRecordIcon className={classes.saleNowIcon} />
-                                }
-                            >
-                                Sale now
-                            </Button>
-                        </Grid>
-                    </Grid>
-                </Container>
+                <Filters />
             </Grid>
             <Grid item xs={12}>
-                <Grid container spacing={2} direction="row" justify="center" alignItems="center">
-                    <Grid item={true} xs={12}>
-                        <Container>
-                            <Grid
-                                container
-                                spacing={2}
-                                direction="row"
-                                justify="center"
-                                alignItems="center"
-                            >
-                                <Grid item={true} xs={6}>
-                                    <Typography variant="h6">Future Sale</Typography>
-                                </Grid>
-                                <Grid item={true} xs={6} justify="flex-end">
-                                    <div style={{ textAlign: 'right' }}>
-                                        <Link
-                                            component="button"
-                                            variant="body2"
-                                            onClick={() => {
-                                                console.info("I'm a button.");
-                                            }}
-                                        >
-                                            View all
-                                        </Link>
-                                    </div>
-                                </Grid>
-                            </Grid>
-                        </Container>
-                    </Grid>
-                    {products.map((card) => {
-                        return (
-                            <Grid key={card.id} item={true} md={3} sm={4} xs={12}>
-                                <Grid container justify="center">
-                                    <ProductCard card={card} />
-                                </Grid>
-                            </Grid>
-                        );
-                    })}
-                </Grid>
-
-                <MaterialCenteredButton
-                    buttonText="Items page"
-                    onClick={() => history.push(AppRoutes.ITEMS)}
+                <ProductsRow
+                    rowName="Future Sale"
+                    products={products.filter(
+                        (e) => e.category === ProductCategory.WantToBuyAndSell,
+                    )}
                 />
-                <MaterialCenteredButton
-                    buttonText="Item page"
-                    onClick={() => history.push(`${AppRoutes.ITEMS}/123`)}
+            </Grid>
+            <Grid item xs={12}>
+                <ProductsRow
+                    rowName="Bet Deals"
+                    products={products.filter(
+                        (e) => e.category === ProductCategory.WantToSellSomeday,
+                    )}
                 />
-                <MaterialCenteredButton
-                    buttonText="About page"
-                    onClick={() => history.push(AppRoutes.ABOUT)}
+            </Grid>
+            <Grid item xs={12}>
+                <ProductsRow
+                    rowName="Sale now"
+                    products={products.filter(
+                        (e) => e.category === ProductCategory.WantToBuyAndSell,
+                    )}
                 />
-                <MaterialCenteredButton
-                    buttonText="Show notification"
-                    onClick={() =>
-                        enqueueSnackbar('Hello world', {
-                            variant: 'success',
-                            anchorOrigin: {
-                                vertical: 'top',
-                                horizontal: 'center',
-                            },
-                            autoHideDuration: 2000,
-                        })
-                    }
-                />
-                <FloatingButton />
-                {/*<MaterialCenteredButton*/}
-                {/*    buttonText="Sign in"*/}
-                {/*    onClick={() => {*/}
-                {/*        const user = MockedUsers.find((e) => e.login === 'admin');*/}
-                {/*        signInHandler({*/}
-                {/*            login: user.login,*/}
-                {/*            password: user.password,*/}
-                {/*        });*/}
-                {/*    }}*/}
-                {/*/>*/}
-                {/*{response?.token && (*/}
-                {/*    <Grid container direction="row" justify="center" alignItems="center">*/}
-                {/*        <Typography variant="h6" noWrap>*/}
-                {/*            {response.token}*/}
-                {/*        </Typography>*/}
-                {/*    </Grid>*/}
-                {/*)}*/}
             </Grid>
         </Grid>
     );

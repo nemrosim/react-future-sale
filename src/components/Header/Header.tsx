@@ -11,7 +11,7 @@ import {
     Menu,
     Grid,
 } from '@material-ui/core';
-import { Search as SearchIcon } from '@material-ui/icons';
+import { Search as SearchIcon, AddOutlined } from '@material-ui/icons';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 
 const useStyles = makeStyles((theme) => ({
@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export const PrimarySearchAppBar = () => {
+export const Header = () => {
     const classes = useStyles();
 
     return (
@@ -67,9 +67,15 @@ export const PrimarySearchAppBar = () => {
                 className={classes.grid}
                 justify="space-between"
                 alignItems="center"
-                spacing={3}
+                spacing={1}
             >
-                <Grid item={true} xs={2} />
+                <Grid item={true} xs={2}>
+                    <Grid container={true} justify="flex-start" alignItems="center" spacing={0}>
+                        <IconButton component="span">
+                            <AddOutlined />
+                        </IconButton>
+                    </Grid>
+                </Grid>
                 <Grid item={true} xs={8}>
                     <div style={{ textAlign: 'center' }}>
                         <Typography variant="h4">Future Sale</Typography>

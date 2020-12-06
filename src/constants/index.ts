@@ -4,6 +4,7 @@ export enum AppRoutes {
     ITEMS = '/items',
     ADD_ITEM = '/addItem',
     LOGIN = '/login',
+    USERS = '/users',
 }
 
 export enum LocalStorageKeys {

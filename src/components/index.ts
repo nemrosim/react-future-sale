@@ -1,2 +1,2 @@
 export { ErrorBoundary } from './ErrorBoundary';
-export { PrimarySearchAppBar } from './PrimarySearchAppBar';
+export { Header } from './Header';

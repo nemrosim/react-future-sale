@@ -1,0 +1,31 @@
+.product-profile-image {
+  width: 200px;
+  border-radius: 10px;
+}
+
+.text-title-bold-name {
+  color: #597393;
+  font-family: "Montserrat Bold", sans-serif;
+  font-size: 35px;
+}
+
+.text-title {
+  height: 36px;
+  color: #597393;
+  font-family: "Montserrat Bold", sans-serif;
+  font-size: 15px;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.relative-icon {
+  position: relative;
+  top: 20px;
+  left: 30px;
+}

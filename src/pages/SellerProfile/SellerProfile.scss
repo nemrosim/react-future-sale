@@ -1,0 +1,97 @@
+//@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap');
+
+@font-face {
+  font-family: 'Montserrat Regular';
+  src: url('../../assets/fonts/Montserrat/Montserrat-Regular.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Montserrat Bold';
+  src: url('../../assets/fonts/Montserrat/Montserrat-Bold.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Montserrat Semi-Bold';
+  src: url('../../assets/fonts/Montserrat/Montserrat-SemiBold.ttf') format('opentype');
+}
+
+.user-name {
+  color: #597393;
+  font-family: "Montserrat Bold", sans-serif;
+  font-size: 35px;
+}
+
+.title-text {
+  height: 36px;
+  color: #597393;
+  font-family: "Montserrat Bold", sans-serif;
+  font-size: 15px;
+}
+
+.user-location {
+  color: #597393;
+  font-family: "Montserrat Regular", sans-serif;
+  font-size: 25px;
+}
+
+.saved-resources {
+  padding: 15px;
+  color: #597393;
+  font-family: "Montserrat Regular", sans-serif;
+  font-size: 18px;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+
+
+.item-category-image {
+  width: 30px;
+  height: 30px;
+}
+
+.tree-image {
+  width: 60px;
+  height: 60px;
+}
+
+.name {
+  width: 157px;
+  color: #597393;
+  font-family: "Montserrat Semi-Bold", sans-serif;
+  font-size: 15px;
+  letter-spacing: -0.34px;
+  padding-top: 10px;
+}
+
+.description {
+  height: 36px;
+  width: 157px;
+  color: #597393;
+  font-family: "Montserrat Regular", sans-serif;
+  font-size: 15px;
+  letter-spacing: -0.34px;
+  line-height: 18px;
+  padding-top: 10px;
+}
+
+.location {
+  height: 15px;
+  width: 69px;
+  opacity: 0.5;
+  color: #597393;
+  font-family: 'Montserrat Regular', sans-serif;
+  font-size: 12px;
+  letter-spacing: -0.29px;
+  line-height: 15px;
+}
+
+
+
+
