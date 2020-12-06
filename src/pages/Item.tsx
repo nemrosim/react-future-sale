@@ -7,6 +7,7 @@ import './Item.scss';
 import { Icons } from '../components/Icons/Icons';
 import IconButton from '@material-ui/core/IconButton';
 import { red } from '@material-ui/core/colors';
+import ReactBnbGallery from 'react-bnb-gallery';
 
 const useStyles = makeStyles((theme) => ({
     avatarIconLarge: {
@@ -43,6 +44,8 @@ export const Item: React.FC<RouteComponentProps<{ itemId: string }>> = ({ histor
 
     const [item, setItem] = useState<ProductProps>();
 
+    const [isPhotoGalleryOpen, setIsPhotoGalleryOpen] = useState(false);
+
     const { itemId } = params;
 
     useEffect(() => {
@@ -69,10 +72,19 @@ export const Item: React.FC<RouteComponentProps<{ itemId: string }>> = ({ histor
                                 <div id="hello" className="flex-end relative-icon">
                                     <Icons.FutureSale />
                                 </div>
+                                {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
                                 <img
                                     className="product-profile-image"
                                     src={item.images[0].url}
                                     alt="Alt"
+                                    onClick={() => {
+                                        setIsPhotoGalleryOpen(true);
+                                    }}
+                                />
+                                <ReactBnbGallery
+                                    show={isPhotoGalleryOpen}
+                                    photos={item.images.map((e) => e.url)}
+                                    onClose={() => setIsPhotoGalleryOpen(false)}
                                 />
                             </div>
                         </Grid>
