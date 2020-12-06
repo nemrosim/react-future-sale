@@ -1,0 +1,14 @@
+.simple-fade-enter {
+  opacity: 0;
+}
+.simple-fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+.simple-fade-exit {
+  opacity: 1;
+}
+.simple-fade-exit-active {
+  opacity: 0;
+  //transition: opacity 200ms;
+}
