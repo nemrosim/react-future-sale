@@ -7,6 +7,8 @@ import { ProductProps, products } from '../constants/products';
 import { ProductCard } from '../components/ProductCard/ProductCard';
 import { ProductCategory } from './AddItem';
 import { Icons } from '../components/Icons/Icons';
+import bannerImage from '../assets/banner.png';
+import './Home.scss';
 
 const useStyles = makeStyles((theme) => ({
     fab: {
@@ -137,6 +139,15 @@ export const Home: React.FC = () => {
             <Grid item={true} xs={12}>
                 <Filters />
             </Grid>
+            <Grid item={true} xs={12}>
+                <div className="banner-container">
+                    <div className="title">Future Sail</div>
+                    <div className="text">Sell today what you buy tomorrow</div>
+                    <div className="button">
+                        <div className="start-button">START</div>
+                    </div>
+                </div>
+            </Grid>
             <Grid item xs={12}>
                 <ProductsRow
                     rowName="Future Sale"
@@ -157,7 +168,7 @@ export const Home: React.FC = () => {
                 <ProductsRow
                     rowName="Sale now"
                     products={products.filter(
-                        (e) => e.category === ProductCategory.WantToBuyAndSell,
+                        (e) => e.category === ProductCategory.CurrentlySelling,
                     )}
                 />
             </Grid>

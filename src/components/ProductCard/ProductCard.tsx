@@ -130,13 +130,13 @@ export const ProductCard: React.FC<{ card: ProductProps }> = ({ card }) => {
                     >
                         {card.images.length}
                     </Button>
-                    {card.category === ProductCategory.WantToBuyAndSell ? (
+                    {card.category === ProductCategory.CurrentlySelling ? (
                         <IconButton size="medium" className={classes.filterIconButton}>
-                            <Icons.FutureSale />
+                            <Icons.SaleNow />
                         </IconButton>
                     ) : (
                         <IconButton size="medium" className={classes.filterIconButton}>
-                            <Icons.SaleNow />
+                            <Icons.FutureSale />
                         </IconButton>
                     )}
 

@@ -1,18 +1,9 @@
 import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import {
-    AppBar,
-    Toolbar,
-    IconButton,
-    Typography,
-    InputBase,
-    Badge,
-    MenuItem,
-    Menu,
-    Grid,
-} from '@material-ui/core';
-import { Search as SearchIcon, AddOutlined } from '@material-ui/icons';
+import { AppBar, Grid, IconButton, InputBase, Toolbar, Typography } from '@material-ui/core';
+import { AddOutlined, Search as SearchIcon } from '@material-ui/icons';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+import './Header.scss';
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -77,8 +68,8 @@ export const Header = () => {
                     </Grid>
                 </Grid>
                 <Grid item={true} xs={8}>
-                    <div style={{ textAlign: 'center' }}>
-                        <Typography variant="h4">Future Sale</Typography>
+                    <div className="flex-center">
+                        <div className="header-title">Future Sale </div>
                     </div>
                 </Grid>
                 <Grid item={true} xs={2}>

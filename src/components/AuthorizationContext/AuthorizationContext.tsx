@@ -27,7 +27,7 @@ export const AuthorizationContext = React.createContext<ContextProps>(initialSta
 
 export const AuthorizationProvider: React.FC = ({ children }) => {
     const [userUID, setUserUID] = useState<string>();
-    const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>();
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(true);
 
     const [pathname, setPathname] = useState<string>();
     const location = useLocation();

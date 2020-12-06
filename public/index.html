@@ -42,10 +42,23 @@
         .loader-container {
             height: 100vh;
             display: flex;
+            flex-direction: column;
             /* align-content: center; */
             align-items: center;
             justify-content: center;
-            background-color: rgb(24, 118, 210);
+            background-color: #04C7A3;
+        }
+
+        .title {
+            height: 69px;
+            width: 259px;
+            color: #FFFFFF;
+            font-family: "Montserrat Bold",sans-serif;
+            font-size: 40px;
+            font-weight: 900;
+            letter-spacing: 2.4px;
+            line-height: 69px;
+            text-align: center;
         }
 
         .lds-ellipsis {
@@ -117,6 +130,7 @@
 <noscript>You need to enable JavaScript to run this app.</noscript>
 <div id="root">
     <div class="loader-container">
+        <div class="title">Future Sale</div>
         <div class="lds-ellipsis">
             <div></div>
             <div></div>
