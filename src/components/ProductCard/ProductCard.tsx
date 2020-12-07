@@ -25,11 +25,11 @@ import { AppRoutes } from '../../constants';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: 200,
+        width: 300,
         border: '1px solid #DAE4ED',
         borderRadius: '10px',
         [theme.breakpoints.down('sm')]: {
-            width: 166.5,
+            width: 200,
         },
         [theme.breakpoints.down('xs')]: {
             width: 166,

@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AppRoutes, LocalStorageKeys } from '../../constants';
-import { axiosInstance } from '../../api';
-import jwt from 'jsonwebtoken';
+import { AppRoutes } from '../../constants';
 import { TokenUserData } from '../../api/mocks/auth/signIn';
 import { Redirect, Route, useLocation } from 'react-router-dom';
 import { LoginPage } from '../../pages/LoginPage';
@@ -27,6 +25,9 @@ export const AuthorizationContext = React.createContext<ContextProps>(initialSta
 
 export const AuthorizationProvider: React.FC = ({ children }) => {
     const [userUID, setUserUID] = useState<string>();
+    /**
+     * Sign in/Sign out was removed from the MVP
+     */
     const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(true);
 
     const [pathname, setPathname] = useState<string>();

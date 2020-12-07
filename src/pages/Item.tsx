@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { RouteComponentProps, useHistory } from 'react-router-dom';
-import { Avatar, Box, Button, Grid, makeStyles } from '@material-ui/core';
+import { Avatar, Box, Button, Container, Grid, makeStyles } from '@material-ui/core';
 import { AppRoutes } from '../constants';
 import { ProductProps, products } from '../constants/products';
 import './Item.scss';
@@ -15,6 +15,7 @@ import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import { AlertDialog } from '../components/AlertDialog';
 import co2 from '../assets/icons/co2.png';
 import treeImage from '../assets/icons/tree.png';
+import { ReturnToHomeScreenButton } from '../components/ReturnToHomeScreen';
 
 const useStyles = makeStyles((theme) => ({
     avatarIconLarge: {
@@ -29,6 +30,26 @@ const useStyles = makeStyles((theme) => ({
     },
     avatarButton: {
         padding: theme.spacing(0),
+    },
+    container: {
+        paddingLeft: theme.spacing(50),
+        paddingRight: theme.spacing(50),
+        [theme.breakpoints.down('lg')]: {
+            paddingLeft: theme.spacing(40),
+            paddingRight: theme.spacing(40),
+        },
+        [theme.breakpoints.down('md')]: {
+            paddingLeft: theme.spacing(30),
+            paddingRight: theme.spacing(30),
+        },
+        [theme.breakpoints.down('sm')]: {
+            paddingLeft: theme.spacing(5),
+            paddingRight: theme.spacing(5),
+        },
+        [theme.breakpoints.down('xs')]: {
+            paddingLeft: theme.spacing(0),
+            paddingRight: theme.spacing(0),
+        },
     },
 }));
 
@@ -245,7 +266,7 @@ const TextRowsWithSellerAvatar: React.FC<{ item: ProductProps }> = ({ item }) =>
     );
 };
 
-const CO: React.FC<{ amount: number }> = ({ amount }) => {
+export const CO: React.FC<{ amount: number }> = ({ amount }) => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <div>
@@ -259,7 +280,7 @@ const CO: React.FC<{ amount: number }> = ({ amount }) => {
     );
 };
 
-const Trees: React.FC<{ amount: number }> = ({ amount }) => {
+export const Trees: React.FC<{ amount: number }> = ({ amount }) => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <div>
@@ -275,9 +296,9 @@ const Trees: React.FC<{ amount: number }> = ({ amount }) => {
 
 export const Item: React.FC<RouteComponentProps<{ itemId: string }>> = ({ history, match }) => {
     const { params } = match;
-    const classes = useStyles();
 
     const [item, setItem] = useState<ProductProps>();
+    const classes = useStyles();
 
     const { itemId } = params;
 
@@ -292,48 +313,42 @@ export const Item: React.FC<RouteComponentProps<{ itemId: string }>> = ({ histor
 
     if (item) {
         return (
-            <Grid container direction="row" justify="center" alignItems="center">
-                <Grid item xs={12}>
-                    <div className="flex-center text-bold" style={{ paddingTop: '20px' }}>
-                        {item.name}
-                    </div>
-                </Grid>
-                <Grid item xs={12}>
-                    <Grid container spacing={2}>
-                        <ImageWithIcon item={item} />
-                        {/* Text rows with Seller Avatar*/}
-                        <Grid item xs={12} className="flex-center">
-                            <TextRowsWithSellerAvatar item={item} />
+            <Container className={classes.container}>
+                <Grid container direction="row" justify="center" alignItems="center">
+                    <Grid item xs={12}>
+                        <div className="flex-center text-bold" style={{ paddingTop: '20px' }}>
+                            {item.name}
+                        </div>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Grid container spacing={2}>
+                            <ImageWithIcon item={item} />
+                            {/* Text rows with Seller Avatar*/}
+                            <Grid item xs={12} className="flex-center">
+                                <TextRowsWithSellerAvatar item={item} />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <ProductLifecycle item={item} />
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12}>
-                            <ProductLifecycle item={item} />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Grid container direction="row" justify="center" alignItems="center">
+                            <Grid item xs={6} className="flex-center">
+                                <CO amount={item.co2PollutionPerYear} />
+                            </Grid>
+                            <Grid item xs={6} className="flex-center">
+                                <Trees amount={item.treesSaved} />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Grid container direction="row" justify="center" alignItems="center">
+                            <ReturnToHomeScreenButton />
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid item xs={12}>
-                    <Grid container direction="row" justify="center" alignItems="center">
-                        <Grid item xs={6} className="flex-center">
-                            <CO amount={item.co2PollutionPerYear} />
-                        </Grid>
-                        <Grid item xs={6} className="flex-center">
-                            <Trees amount={item.treesSaved} />
-                        </Grid>
-                    </Grid>
-                </Grid>
-                <Grid item xs={12}>
-                    <Grid container direction="row" justify="center" alignItems="center">
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={() => {
-                                history.push(AppRoutes.HOME);
-                            }}
-                        >
-                            Home page
-                        </Button>
-                    </Grid>
-                </Grid>
-            </Grid>
+            </Container>
         );
     } else {
         return <div>Loading...</div>;

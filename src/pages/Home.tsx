@@ -7,10 +7,29 @@ import { ProductProps, products } from '../constants/products';
 import { ProductCard } from '../components/ProductCard/ProductCard';
 import { ProductCategory } from './AddItem';
 import { Icons } from '../components/Icons/Icons';
-import bannerImage from '../assets/banner.png';
 import './Home.scss';
 
 const useStyles = makeStyles((theme) => ({
+    container: {
+        paddingLeft: theme.spacing(50),
+        paddingRight: theme.spacing(50),
+        [theme.breakpoints.down('lg')]: {
+            paddingLeft: theme.spacing(40),
+            paddingRight: theme.spacing(40),
+        },
+        [theme.breakpoints.down('md')]: {
+            paddingLeft: theme.spacing(30),
+            paddingRight: theme.spacing(30),
+        },
+        [theme.breakpoints.down('sm')]: {
+            paddingLeft: theme.spacing(5),
+            paddingRight: theme.spacing(5),
+        },
+        [theme.breakpoints.down('xs')]: {
+            paddingLeft: theme.spacing(3),
+            paddingRight: theme.spacing(3),
+        },
+    },
     fab: {
         position: 'absolute',
         bottom: theme.spacing(2),
@@ -41,8 +60,6 @@ const Filter = ({ text, icon }: { text: string; icon: any }) => {
 };
 
 const Filters = () => {
-    const classes = useStyles();
-
     return (
         <Container style={{ marginTop: '15px' }}>
             <Grid container spacing={1} direction="row" justify="space-between" alignItems="center">
@@ -61,10 +78,12 @@ const Filters = () => {
 };
 
 const ProductsRow = ({ rowName, products }: { rowName: string; products: Array<ProductProps> }) => {
+    const classes = useStyles();
+
     return (
         <Grid container spacing={1} direction="row" justify="center" alignItems="center">
             <Grid item={true} xs={12}>
-                <Container>
+                <Container className={classes.container}>
                     <Grid
                         container
                         spacing={0}
@@ -140,11 +159,13 @@ export const Home: React.FC = () => {
                 <Filters />
             </Grid>
             <Grid item={true} xs={12}>
-                <div className="banner-container">
-                    <div className="title">Future Sail</div>
-                    <div className="text">Sell today what you buy tomorrow</div>
-                    <div className="button">
-                        <div className="start-button">START</div>
+                <div className="flex-center">
+                    <div className="banner-container">
+                        <div className="title">Future Sail</div>
+                        <div className="text">Sell today what you buy tomorrow</div>
+                        <div className="button">
+                            <div className="start-button">START</div>
+                        </div>
                     </div>
                 </div>
             </Grid>
