@@ -1,9 +1,12 @@
 import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import { AppBar, Grid, IconButton, InputBase, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Grid, IconButton, InputBase, Toolbar } from '@material-ui/core';
 import { AddOutlined, Search as SearchIcon } from '@material-ui/icons';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import './Header.scss';
+import { useFilterContext } from '../FilterContext';
+import { useHistory } from 'react-router-dom';
+import { AppRoutes } from '../../constants';
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -51,6 +54,10 @@ const useStyles = makeStyles((theme) => ({
 export const Header = () => {
     const classes = useStyles();
 
+    const { filterValue, setFilterValue } = useFilterContext();
+
+    const history = useHistory();
+
     return (
         <>
             <Grid
@@ -62,7 +69,12 @@ export const Header = () => {
             >
                 <Grid item={true} xs={2}>
                     <Grid container={true} justify="flex-start" alignItems="center" spacing={0}>
-                        <IconButton component="span">
+                        <IconButton
+                            component="span"
+                            onClick={() => {
+                                history.push(`${AppRoutes.ADD_ITEM}`);
+                            }}
+                        >
                             <AddOutlined />
                         </IconButton>
                     </Grid>
@@ -93,6 +105,11 @@ export const Header = () => {
                                 input: classes.inputInput,
                             }}
                             inputProps={{ 'aria-label': 'search' }}
+                            value={filterValue}
+                            onChange={(event) => {
+                                const value = event.currentTarget.value;
+                                setFilterValue(value);
+                            }}
                         />
                     </div>
                 </Toolbar>

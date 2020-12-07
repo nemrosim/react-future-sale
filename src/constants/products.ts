@@ -148,7 +148,8 @@ export const products: Array<ProductProps> = [
         productCategory: 'Clothes',
         productSubCategory: 'Suits',
         timeEnd: 123,
-        description: 'Awesome suit',
+        description:
+            'The "White" and "Floral White" dress looks a little bit see through, suggest wear a nude or lighter color bra or underwear, and the "White" dress is a little heavier than the other colors, please notice it before placing an order. 2: About the floral dress, the "Floral Print" is random, we couldn\'t ensure the position of floral print on each dress, but they are definitely made of same pattern fabric.',
         location: 'New York',
         seller: sellers[1],
     },
@@ -168,7 +169,8 @@ export const products: Array<ProductProps> = [
         productCategory: 'Luxury',
         productSubCategory: 'Watches',
         timeEnd: 123,
-        description: 'Awesome watch',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque diam sapien, dignissim ut nisi at, mattis mollis ipsum. Morbi non quam dolor. Quisque at tortor id massa porttitor molestie. Phasellus quis dictum orci. Vestibulum ante ipsum primis in faucibus orci.',
         location: 'Paris',
         seller: sellers[0],
     },
@@ -193,7 +195,8 @@ export const products: Array<ProductProps> = [
 
         productSubCategory: 'Books',
         timeEnd: 123,
-        description: 'Some description',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque diam sapien, dignissim ut nisi at, mattis mollis ipsum. Morbi non quam dolor. Quisque at tortor id massa porttitor molestie. Phasellus quis dictum orci. Vestibulum ante ipsum primis in faucibus orci.',
         location: 'Los Angeles',
         seller: sellers[2],
     },
@@ -221,7 +224,8 @@ export const products: Array<ProductProps> = [
         productCategory: 'Сomp. equip',
         productSubCategory: 'Notebooks',
         timeEnd: 123,
-        description: 'Awesome note',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque diam sapien, dignissim ut nisi at, mattis mollis ipsum. Morbi non quam dolor. Quisque at tortor id massa porttitor molestie. Phasellus quis dictum orci. Vestibulum ante ipsum primis in faucibus orci.',
         location: 'Zhmerynka',
         seller: sellers[3],
     },
@@ -251,7 +255,8 @@ export const products: Array<ProductProps> = [
         productSubCategory: 'Books',
 
         timeEnd: 123,
-        description: 'Some description',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque diam sapien, dignissim ut nisi at, mattis mollis ipsum. Morbi non quam dolor. Quisque at tortor id massa porttitor molestie. Phasellus quis dictum orci. Vestibulum ante ipsum primis in faucibus orci.',
         location: 'Los Angeles',
         seller: sellers[2],
     },
@@ -281,7 +286,8 @@ export const products: Array<ProductProps> = [
         productSubCategory: 'Books',
 
         timeEnd: 123,
-        description: 'Some description',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque diam sapien, dignissim ut nisi at, mattis mollis ipsum. Morbi non quam dolor. Quisque at tortor id massa porttitor molestie. Phasellus quis dictum orci. Vestibulum ante ipsum primis in faucibus orci.',
         location: 'Los Angeles',
         seller: sellers[3],
     },

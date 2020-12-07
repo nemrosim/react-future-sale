@@ -13,12 +13,11 @@ import {
     Paper,
     Select,
     TextField,
-    Typography,
 } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
-import { AppRoutes } from '../constants';
 import FaceIcon from '@material-ui/icons/Face';
-import DoneIcon from '@material-ui/icons/Done';
+import { ReturnToHomeScreenButton } from '../components/ReturnToHomeScreen';
+import howItCouldLook from '../assets/How it could look.jpg';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -193,39 +192,15 @@ export const AddItem = () => {
                         }}
                     />
                 </Grid>
-                <Grid item={true}>
-                    <MultipleSelect category={category} setCategory={setCategory} />
+
+                <Grid item={true} xs={12}>
+                    <div className="flex-center">
+                        <img src={howItCouldLook} alt="How it" />
+                    </div>
                 </Grid>
-                {category && (
-                    <Grid item={true}>
-                        <MultipleDateSelect
-                            amountOfMonths={amountOfMonths}
-                            setAmountOfMonths={setAmountOfMonths}
-                        />
-                    </Grid>
-                )}
 
                 <Grid item={true}>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={() => {
-                            history.push(AppRoutes.HOME);
-                        }}
-                    >
-                        {`I'm ready to sell this`}
-                    </Button>
-                </Grid>
-                <Grid item={true}>
-                    <Button
-                        variant="contained"
-                        color="default"
-                        onClick={() => {
-                            history.push(AppRoutes.HOME);
-                        }}
-                    >
-                        Return to home page
-                    </Button>
+                    <ReturnToHomeScreenButton />
                 </Grid>
             </Grid>
         </Paper>

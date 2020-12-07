@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { RouteComponentProps, useHistory } from 'react-router-dom';
-import { Avatar, Box, Button, Container, Grid, makeStyles } from '@material-ui/core';
+import { Avatar, Box, Button, Card, Container, Grid, makeStyles } from '@material-ui/core';
 import { AppRoutes } from '../constants';
 import { ProductProps, products } from '../constants/products';
 import './Item.scss';
@@ -15,6 +15,7 @@ import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import { AlertDialog } from '../components/AlertDialog';
 import co2 from '../assets/icons/co2.png';
 import treeImage from '../assets/icons/tree.png';
+import waterDrop from '../assets/icons/waterDrop.png';
 import { ReturnToHomeScreenButton } from '../components/ReturnToHomeScreen';
 
 const useStyles = makeStyles((theme) => ({
@@ -50,6 +51,25 @@ const useStyles = makeStyles((theme) => ({
             paddingLeft: theme.spacing(0),
             paddingRight: theme.spacing(0),
         },
+    },
+    rentButton: {
+        backgroundColor: '#ffffff',
+        border: '2px solid #00C18B',
+        borderRadius: '26px',
+        height: '52px',
+        color: 'black',
+    },
+    bookButton: {
+        backgroundColor: '#01BF8C',
+        border: '2px solid #00C18B',
+        borderRadius: '26px',
+        height: '52px',
+        color: '#ffffff',
+    },
+    lifecycleCard: {
+        margin: 23,
+        padding: 10,
+        borderRadius: '10px',
     },
 }));
 
@@ -133,6 +153,9 @@ const ImageWithIcon: React.FC<{ item: ProductProps }> = ({ item }) => {
                 </Grid>
                 <Grid item xs={12}>
                     <div className="flex-center text-regular">{categoryDescriptionText()}</div>
+                </Grid>
+                <Grid item xs={12}>
+                    <div className="flex-center text-bold">{`$ ${item.cost}`}</div>
                 </Grid>
                 <Grid item xs={12}>
                     <Box mt={2}>
@@ -269,9 +292,6 @@ const TextRowsWithSellerAvatar: React.FC<{ item: ProductProps }> = ({ item }) =>
 export const CO: React.FC<{ amount: number }> = ({ amount }) => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <div>
-                <img style={{ width: '70px', paddingBottom: '10px' }} src={co2} alt="CO2" />
-            </div>
             <div className="co2-container">
                 <div style={{ fontWeight: 900 }}>{`${amount} kg`}</div>
                 <div>CO2/year</div>
@@ -286,9 +306,21 @@ export const Trees: React.FC<{ amount: number }> = ({ amount }) => {
             <div>
                 <img style={{ width: '70px', paddingBottom: '10px' }} src={treeImage} alt="CO2" />
             </div>
-            <div className="co2-container">
-                <div style={{ fontWeight: 900 }}>{amount}</div>
-                <div>Trees saved</div>
+            <div className="flex-center text-regular">
+                <div style={{ fontWeight: 900 }}>{`${amount} saved`}</div>
+            </div>
+        </div>
+    );
+};
+
+export const Water: React.FC<{ amount: number }> = ({ amount }) => {
+    return (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div>
+                <img style={{ width: '70px', paddingBottom: '10px' }} src={waterDrop} alt="CO2" />
+            </div>
+            <div className="flex-center text-regular">
+                <div style={{ fontWeight: 900 }}>{`${amount} saved`}</div>
             </div>
         </div>
     );
@@ -333,14 +365,74 @@ export const Item: React.FC<RouteComponentProps<{ itemId: string }>> = ({ histor
                         </Grid>
                     </Grid>
                     <Grid item xs={12}>
-                        <Grid container direction="row" justify="center" alignItems="center">
-                            <Grid item xs={6} className="flex-center">
-                                <CO amount={item.co2PollutionPerYear} />
+                        <div className="flex-center">
+                            <Box m={2}>
+                                <div className="new-text-description">Description</div>
+                            </Box>
+                        </div>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <div className="flex-center">
+                            <Box m={2}>
+                                <div className="new-text">{item.description}</div>
+                            </Box>
+                        </div>
+                    </Grid>
+                    {/*<Grid item xs={12}>*/}
+                    {/*    <Grid container direction="row" justify="center" alignItems="center">*/}
+                    {/*        <Grid item xs={6} className="flex-center">*/}
+                    {/*            <CO amount={item.co2PollutionPerYear} />*/}
+                    {/*        </Grid>*/}
+                    {/*        <Grid item xs={6} className="flex-center">*/}
+                    {/*            <Trees amount={item.treesSaved} />*/}
+                    {/*        </Grid>*/}
+                    {/*    </Grid>*/}
+                    {/*</Grid>*/}
+                    <Grid item xs={12}>
+                        <Card elevation={3} className={classes.lifecycleCard}>
+                            <Grid container direction="row" justify="center" alignItems="center">
+                                <Grid item xs={4} className="flex-center">
+                                    <CO amount={item.co2PollutionPerYear} />
+                                </Grid>
+                                <Grid item xs={4} className="flex-center">
+                                    <Trees amount={item.treesSaved} />
+                                </Grid>
+                                <Grid item xs={4} className="flex-center">
+                                    <Water amount={item.treesSaved} />
+                                </Grid>
                             </Grid>
-                            <Grid item xs={6} className="flex-center">
-                                <Trees amount={item.treesSaved} />
-                            </Grid>
-                        </Grid>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <Box m={1} mt={4}>
+                            <Button
+                                className={classes.rentButton}
+                                variant="contained"
+                                fullWidth={true}
+                                color="primary"
+                                onClick={() => {
+                                    alert('In development');
+                                }}
+                            >
+                                Rent
+                            </Button>
+                        </Box>
+                    </Grid>
+
+                    <Grid item xs={6}>
+                        <Box m={1} mt={4}>
+                            <Button
+                                className={classes.bookButton}
+                                variant="contained"
+                                fullWidth={true}
+                                color="primary"
+                                onClick={() => {
+                                    alert('In development');
+                                }}
+                            >
+                                Book
+                            </Button>
+                        </Box>
                     </Grid>
                     <Grid item xs={12}>
                         <Grid container direction="row" justify="center" alignItems="center">

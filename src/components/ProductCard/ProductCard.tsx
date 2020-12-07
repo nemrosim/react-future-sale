@@ -23,6 +23,10 @@ import { Icons } from '../Icons/Icons';
 import { ProductCategory } from '../../pages/AddItem';
 import { AppRoutes } from '../../constants';
 
+const BOTTOM_XS = '95px';
+const BOTTOM_SM = '110px';
+const BOTTOM_DEFAULT = '130px';
+
 const useStyles = makeStyles((theme) => ({
     root: {
         width: 300,
@@ -52,34 +56,34 @@ const useStyles = makeStyles((theme) => ({
     avatar: {
         backgroundColor: red[500],
         padding: 0,
-        width: '23px',
-        height: '23px',
+        width: '35px',
+        height: '35px',
     },
     iconButton: {
         position: 'relative',
         borderRadius: '250px',
-        bottom: '110px',
+        bottom: BOTTOM_DEFAULT,
         margin: theme.spacing(1),
         opacity: 0.7,
         [theme.breakpoints.down('sm')]: {
-            bottom: '95px',
+            bottom: BOTTOM_SM,
         },
         [theme.breakpoints.down('xs')]: {
-            bottom: '86px',
+            bottom: BOTTOM_XS,
         },
     },
     filterIconButton: {
         position: 'relative',
         borderRadius: '250px',
-        bottom: '110px',
+        bottom: BOTTOM_DEFAULT,
         margin: theme.spacing(0),
         padding: theme.spacing(0),
         opacity: 0.9,
         [theme.breakpoints.down('sm')]: {
-            bottom: '95px',
+            bottom: BOTTOM_SM,
         },
         [theme.breakpoints.down('xs')]: {
-            bottom: '86px',
+            bottom: BOTTOM_XS,
         },
     },
     avatarButton: {
@@ -96,9 +100,9 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: 0,
     },
     starIcon: {
-        height: '10.48px',
-        width: '10.48px',
-        color: '#BFD4E4',
+        height: '13px',
+        width: '13px',
+        color: '#ffd500',
     },
 }));
 

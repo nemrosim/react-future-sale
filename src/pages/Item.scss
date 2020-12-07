@@ -1,5 +1,5 @@
 .product-profile-image {
-  width: 200px;
+  width: 280px;
   border-radius: 10px;
 }
 
@@ -33,12 +33,33 @@
 .co2-container {
   width: 80px;
   height: 80px;
-  background-color: #01BF8C;
+  background-color: #ffffff;
   border-radius: 45px;
-  border: 3px solid #008f69;
+  border: 2px solid #8f0000;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   align-items: center;
+}
+
+.new-text {
+  height: 144px;
+  width: 331px;
+  color: #002D41;
+  font-family: "Montserrat Regular", sans-serif;
+  font-size: 14px;
+  letter-spacing: -0.34px;
+  line-height: 18px;
+}
+
+.new-text-description {
+  height: 18px;
+  width: 80px;
+  color: #002D41;
+  font-family: "Montserrat Semi-Bold", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.34px;
+  line-height: 18px;
 }

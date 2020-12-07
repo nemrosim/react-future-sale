@@ -15,8 +15,8 @@ import { ReturnToHomeScreenButton } from '../../components/ReturnToHomeScreen';
 
 const useStyles = makeStyles((theme) => ({
     avatarIconLarge: {
-        width: theme.spacing(9),
-        height: theme.spacing(9),
+        width: theme.spacing(20),
+        height: theme.spacing(20),
     },
     container: {
         paddingLeft: theme.spacing(50),
@@ -84,7 +84,9 @@ const SoldItems: React.FC = () => {
                 {soldProducts.map((e) => {
                     return (
                         <Grid container key={e.id}>
-                            <Grid item={true} xs={6}>
+                            <Grid item={true} xs={3} />
+
+                            <Grid item={true} xs={3}>
                                 <Center>
                                     {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
                                     <img
@@ -94,9 +96,10 @@ const SoldItems: React.FC = () => {
                                     />
                                 </Center>
                             </Grid>
-                            <Grid item={true} xs={6}>
+                            <Grid item={true} xs={3}>
                                 <div className="flex-center text-semi-bold">{e.amount}</div>
                             </Grid>
+                            <Grid item={true} xs={3} />
                         </Grid>
                     );
                 })}
@@ -150,14 +153,16 @@ const UserData: React.FC<{ user: SellerProps }> = ({ user }) => {
 
     return (
         <Grid container justify="center" alignItems="center">
-            <Grid item={true} xs={5} className="flex-center">
-                <Avatar
-                    alt={user.avatar.fallback}
-                    src={user.avatar.url}
-                    className={classes.avatarIconLarge}
-                />
+            <Grid item={true} xs={12} className="flex-center">
+                <Box m={3}>
+                    <Avatar
+                        alt={user.avatar.fallback}
+                        src={user.avatar.url}
+                        className={classes.avatarIconLarge}
+                    />
+                </Box>
             </Grid>
-            <Grid item={true} xs={7}>
+            <Grid item={true} xs={12}>
                 <div className="flex-center text-bold">{`${Number(user.rating).toFixed(2)}`}</div>
                 <Center>
                     <Rating name="size-large" defaultValue={user.rating} size="large" />

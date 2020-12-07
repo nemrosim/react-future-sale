@@ -1,8 +1,11 @@
 import { put } from 'redux-saga/effects';
 import { SagaIterator } from 'redux-saga';
-import { addProductErrorAction, addProductSuccessAction } from './add_product.actions';
+import {
+    AddProductActionProps,
+    addProductErrorAction,
+    addProductSuccessAction,
+} from './add_product.actions';
 import { Action } from 'redux-actions';
-import { AddProductActionProps } from './add_product.actions';
 import { firebase_initializedApp } from '../../../api/firebase';
 import { errorHandler } from '../../../utils/HelperFunctions';
 

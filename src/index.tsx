@@ -12,6 +12,7 @@ import reportWebVitals from './reportWebVitals';
 
 import './api/mocks/axiosMock';
 import './reset.css';
+import { FilterProvider } from './components/FilterContext';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -20,7 +21,9 @@ ReactDOM.render(
                 <BrowserRouter>
                     <ErrorBoundary>
                         <AuthorizationProvider>
-                            <App />
+                            <FilterProvider>
+                                <App />
+                            </FilterProvider>
                         </AuthorizationProvider>
                     </ErrorBoundary>
                 </BrowserRouter>

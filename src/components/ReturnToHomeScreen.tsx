@@ -3,6 +3,7 @@ import { AppRoutes } from '../constants';
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
+import { useFilterContext } from './FilterContext';
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -16,6 +17,8 @@ export const ReturnToHomeScreenButton: React.FC = () => {
     const classes = useStyles();
     const history = useHistory();
 
+    const { setFilterValue } = useFilterContext();
+
     return (
         <Box m={5}>
             <Button
@@ -23,6 +26,7 @@ export const ReturnToHomeScreenButton: React.FC = () => {
                 variant="contained"
                 color="primary"
                 onClick={() => {
+                    setFilterValue('');
                     history.push(AppRoutes.HOME);
                 }}
             >
