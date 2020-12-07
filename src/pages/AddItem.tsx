@@ -195,7 +195,7 @@ export const AddItem = () => {
 
                 <Grid item={true} xs={12}>
                     <div className="flex-center">
-                        <img src={howItCouldLook} alt="How it" />
+                        <img style={{ width: '100%' }} src={howItCouldLook} alt="How it" />
                     </div>
                 </Grid>
 
